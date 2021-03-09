@@ -6,13 +6,16 @@ on:
 
 # Environment variables available to all jobs and steps in this workflow
 env:
-  IBM_CLOUD_REGION: 
+  IBM_CLOUD_REGION: us-east
   IBM_CLOUD_GROUP: default
-  IBM_CLOUD_SPACE: 
-  IBM_CLOUD_ORG: 
+  IBM_CLOUD_SPACE: dev-us-east
+  IBM_CLOUD_ORG: ulidder@us.ibm.com
   MANIFEST_NAME: manifest.yml
-  MANIFEST_LOCATION: server
   IBM_CLOUD_API: ${{secrets.IBM_CLOUD_API_KEY}}
+
+defaults:
+  run:
+    working-directory: server
 
 jobs:
   setup-build-publish-deploy:
@@ -41,5 +44,5 @@ jobs:
         run: ibmcloud cf apps
         shell: bash
       - name: Deploy manifest file
-        run: ibmcloud cf push -f $MANIFEST_LOCATION/$MANIFEST_NAME
+        run: ibmcloud cf push -f ./$MANIFEST_NAME
         shell: bash

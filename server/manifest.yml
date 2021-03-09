@@ -1,11 +1,12 @@
   applications:
-  - name: dealerreiew
+  - name: dealership-123
     routes:
       - route: mydjango.us-east.mybluemix.net
     memory: 128M
     buildpack: python_buildpack
-  - name: dealerreiew-nginx
+  - name: dealership-123-nginx
     routes:
       - route: mydjango.us-east.mybluemix.net/static
     memory: 128M
     buildpack: staticfile_buildpack
+    
